@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet --version)",
+      "Bash(npm --version)",
+      "Bash(ng version:*)",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet ef:*)",
+      "Bash(dotnet tool:*)",
+      "Bash(ng new:*)",
+      "Bash(ng add:*)",
+      "Bash(ng build:*)",
+      "Bash(dotnet build:*)"
+    ]
+  }
+}

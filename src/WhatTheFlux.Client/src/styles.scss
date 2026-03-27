@@ -1,0 +1,52 @@
+/* Design tokens */
+:root {
+  --primary:        #c2185b;
+  --primary-dark:   #880e4f;
+  --primary-alpha:  rgba(194, 24, 91, 0.18);
+  --accent:         #ad1457;
+
+  --surface:        #ffffff;
+  --surface-alt:    #fdf6f9;
+  --surface-hover:  #fce4ec;
+
+  --text:           #212121;
+  --text-muted:     #757575;
+
+  --border:         #e0e0e0;
+  --input-bg:       #ffffff;
+
+  --error:          #c62828;
+  --error-bg:       #ffebee;
+
+  --score-normal:     #43a047;
+  --score-heavy:      #fb8c00;
+  --score-very-heavy: #e53935;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  background: #f8f0f4;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1, h2, h3 {
+  margin: 0;
+}

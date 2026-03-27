@@ -1,0 +1,45 @@
+<div class="page">
+  <header class="page-header">
+    <h1>What The Flux</h1>
+    <p class="subtitle">Menstrual Flow Tracker</p>
+  </header>
+
+  @if (loading()) {
+    <div class="loading">Loading...</div>
+  } @else if (error()) {
+    <div class="error">{{ error() }}</div>
+  } @else if (periods().length === 0) {
+    <div class="empty-state">
+      <p>No periods recorded yet.</p>
+      <p>Start tracking by creating your first entry.</p>
+    </div>
+  } @else {
+    <ul class="period-list">
+      @for (period of periods(); track period.id) {
+        <li class="period-card" (click)="viewPeriod(period.id)">
+          <div class="card-main">
+            <span class="date">{{ formatDate(period.startDate) }}</span>
+            @if (period.notes) {
+              <span class="notes">{{ period.notes }}</span>
+            }
+            <span class="days">{{ period.dayCount }} day{{ period.dayCount !== 1 ? 's' : '' }}</span>
+          </div>
+          <div class="card-right">
+            <div
+              class="score-badge"
+              [style.background]="scoreService.getCategoryColor(period.totalScore)"
+            >
+              <span class="score-value">{{ period.totalScore }}</span>
+              <span class="score-label">{{ scoreService.getCategoryLabel(period.totalScore) }}</span>
+            </div>
+            <button class="btn-icon btn-delete" (click)="delete($event, period.id)" title="Delete">
+              &#x1F5D1;
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+
+  <button class="fab" (click)="newPeriod()" title="New period">+</button>
+</div>

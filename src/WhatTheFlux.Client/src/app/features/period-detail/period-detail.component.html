@@ -1,0 +1,47 @@
+<div class="page">
+  <button class="btn-back" (click)="back()">&#8592; All periods</button>
+
+  @if (loading()) {
+    <div class="loading">Loading...</div>
+  } @else if (error()) {
+    <div class="error">{{ error() }}</div>
+  } @else if (detail(); as d) {
+    <header class="period-header">
+      <div>
+        <h2>{{ formatDate(d.startDate) }}</h2>
+        @if (d.notes) {
+          <p class="notes">{{ d.notes }}</p>
+        }
+      </div>
+      <div
+        class="score-badge"
+        [style.background]="scoreService.getCategoryColor(grandTotal())"
+      >
+        <span class="score-value">{{ grandTotal() }}</span>
+        <span class="score-label">{{ scoreService.getCategoryLabel(grandTotal()) }}</span>
+      </div>
+    </header>
+
+    @if (saveError()) {
+      <div class="save-error">{{ saveError() }}</div>
+    }
+
+    <wtf-score-grid
+      [detail]="d"
+      (countChanged)="onCountChanged($event)"
+    />
+
+    <div class="actions">
+      <button class="btn btn-secondary" (click)="addDay()">+ Add Day</button>
+    </div>
+
+    <div class="score-info">
+      <h3>Score interpretation</h3>
+      <ul>
+        <li><span class="dot normal"></span> &lt;100 — Normal flow</li>
+        <li><span class="dot heavy"></span> 100–300 — Heavy flow</li>
+        <li><span class="dot very-heavy"></span> &gt;300 — Very heavy flow (menorrhagia)</li>
+      </ul>
+    </div>
+  }
+</div>

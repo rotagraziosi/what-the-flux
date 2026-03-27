@@ -1,0 +1,101 @@
+.grid-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  font-size: 0.9rem;
+
+  th, td {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  thead tr {
+    background: var(--primary);
+    color: white;
+
+    th {
+      font-weight: 600;
+      border-color: var(--primary-dark);
+    }
+  }
+
+  tbody tr {
+    transition: background 0.15s;
+
+    &:hover {
+      background: var(--surface-hover);
+    }
+
+    .col-criterion {
+      text-align: left;
+      font-weight: 500;
+      min-width: 220px;
+    }
+  }
+
+  tfoot tr {
+    background: var(--surface-alt);
+    font-weight: 700;
+
+    .grand-label {
+      text-align: right;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.col-multiplier {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  min-width: 55px;
+}
+
+.col-day {
+  min-width: 72px;
+}
+
+.count-input {
+  width: 56px;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-alpha);
+  }
+
+  /* hide spinners */
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 0;
+  }
+  &:hover::-webkit-inner-spin-button,
+  &:hover::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}
+
+.row-total {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.grand-total {
+  font-size: 1.1rem;
+  color: var(--accent);
+}

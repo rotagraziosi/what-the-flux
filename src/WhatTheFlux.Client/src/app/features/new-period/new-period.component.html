@@ -1,0 +1,56 @@
+<div class="page">
+  <button class="btn-back" (click)="cancel()">&#8592; Back</button>
+  <h2>New Period Entry</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <div class="field">
+      <label for="startDate">Start date</label>
+      <input
+        id="startDate"
+        type="date"
+        formControlName="startDate"
+        class="input"
+      />
+      @if (form.controls.startDate.invalid && form.controls.startDate.touched) {
+        <span class="field-error">Start date is required.</span>
+      }
+    </div>
+
+    <div class="field">
+      <label for="initialDays">Number of days (default 7)</label>
+      <input
+        id="initialDays"
+        type="number"
+        formControlName="initialDays"
+        min="1"
+        max="30"
+        class="input input-sm"
+      />
+      @if (form.controls.initialDays.invalid && form.controls.initialDays.touched) {
+        <span class="field-error">Must be between 1 and 30.</span>
+      }
+    </div>
+
+    <div class="field">
+      <label for="notes">Notes (optional)</label>
+      <textarea
+        id="notes"
+        formControlName="notes"
+        rows="3"
+        class="input"
+        placeholder="Any notes about this cycle..."
+      ></textarea>
+    </div>
+
+    @if (error()) {
+      <div class="error">{{ error() }}</div>
+    }
+
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="submitting()">
+        {{ submitting() ? 'Creating...' : 'Create' }}
+      </button>
+    </div>
+  </form>
+</div>

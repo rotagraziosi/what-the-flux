@@ -1,0 +1,44 @@
+<div class="grid-wrapper">
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th class="col-criterion">Criterion</th>
+        <th class="col-multiplier">Points</th>
+        @for (day of detail.dayNumbers; track day) {
+          <th class="col-day">Day {{ day }}</th>
+        }
+        <th class="col-total">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of detail.rows; track row.criterionId) {
+        <tr>
+          <td class="col-criterion">{{ row.label }}</td>
+          <td class="col-multiplier">×{{ row.multiplier }}</td>
+          @for (day of detail.dayNumbers; track day) {
+            <td class="col-day">
+              <input
+                type="number"
+                min="0"
+                max="9999"
+                [value]="getCount(row, day)"
+                (input)="onInput($event, day, row.criterionId)"
+                class="count-input"
+              />
+            </td>
+          }
+          <td class="col-total row-total">{{ row.rowTotal }}</td>
+        </tr>
+      }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="grand-label">Higham Score</td>
+        @for (day of detail.dayNumbers; track day) {
+          <td class="col-day"></td>
+        }
+        <td class="col-total grand-total">{{ grandTotal }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
