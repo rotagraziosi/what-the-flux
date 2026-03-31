@@ -2,6 +2,9 @@
 .git
 .gitignore
 
+# Secrets
+.env
+
 # IDE
 .idea
 .vscode

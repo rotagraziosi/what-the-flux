@@ -1,0 +1,17 @@
+# Credentials — never commit real secrets
+.env
+
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# Node
+**/node_modules/
+**/dist/
+
+# Database
+**/*.db
+**/*.db-shm
+**/*.db-wal
