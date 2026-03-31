@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "4321:8080"
+    volumes:
+      - app-data:/app/data
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/whattheflux.db
+    restart: unless-stopped
+
+volumes:
+  app-data:

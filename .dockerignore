@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# .NET
+**/bin
+**/obj
+*.user
+*.suo
+
+# Node
+**/node_modules
+**/dist
+
+# Build artifacts
+**/publish
+
+# Database files (will be created in volume)
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+*.md
+LICENSE
